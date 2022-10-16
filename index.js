@@ -78,4 +78,6 @@ var con = mysql.createConnection({
 			});
 		})
 	});
-app.listen(port);
+app.listen(port, () => {
+	console.log(`server started on port ${PORT}`);
+  });
