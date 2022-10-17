@@ -24,6 +24,12 @@ var con = mysql.createConnection({
     password: "1e209559216223680a1cf0f6dc87b1a5ecaaca60",
     database: "banking_speakgain",
   });
+
+  app.get("/", function (req, res) {
+      res.json({
+        status: "success",
+      });
+  });
   
   app.get("/customer", function (req, res) {
     var sql = "SELECT * FROM `customer`";
