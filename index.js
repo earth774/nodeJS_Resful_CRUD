@@ -25,7 +25,7 @@ var con = mysql.createConnection({
     database: "banking_speakgain",
   });
   
-  app.get("/", function (req, res) {
+  app.get("/customer", function (req, res) {
     var sql = "SELECT * FROM `customer`";
     con.query(sql, function (err, row) {
       if (err) throw err;
@@ -36,7 +36,7 @@ var con = mysql.createConnection({
     });
   });
   
-  app.get("/:id", function (req, res) {
+  app.get("/customer/:id", function (req, res) {
     var sql = "SELECT * FROM `customer` WHERE `id`=" + req.params.id;
     con.query(sql, function (err, row) {
       if (err) throw err;
@@ -47,7 +47,7 @@ var con = mysql.createConnection({
     });
   });
   
-  app.post("/", function (req, res) {
+  app.post("/customer/", function (req, res) {
     var sql = "INSERT INTO `customer`(`fullname`, `phone_number`) VALUES (?,?)";
     con.query(sql, [req.body.fullname, req.body.phone_number], function (err) {
       if (err) throw err;
@@ -58,7 +58,7 @@ var con = mysql.createConnection({
     });
   });
   
-  app.put("/:id", function (req, res) {
+  app.put("/customer/:id", function (req, res) {
     var sql =
       "UPDATE `customer` SET `fullname`=?,`phone_number`=? WHERE `id`=" +
       req.params.id;
@@ -71,7 +71,7 @@ var con = mysql.createConnection({
     });
   });
   
-  app.delete("/:id", function (req, res) {
+  app.delete("/customer/:id", function (req, res) {
     var sql = "DELETE FROM `customer` WHERE `id`=" + req.params.id;
     con.query(sql, function (err) {
       if (err) throw err;
